@@ -211,4 +211,7 @@ Por último, asegúrate de que la integración continua de GitHub Actions se eje
 ![Detalles de ejecución](caps/actions2.png)
 
 
+Iniciar entorno virtuala
+source .venv/bin/activate
+
 

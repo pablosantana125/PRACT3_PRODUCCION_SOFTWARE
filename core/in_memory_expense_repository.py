@@ -21,6 +21,12 @@ class InMemoryExpenseRepository(ExpenseRepository):
         :param expense_id:  La id del gasto
         :return: None
         """
+        for extense in self._expenses:
+            if expense_id == extense.id:
+                self._expenses.remove(extense)
+                return
+        raise ValueError(f"No se encontró el gasto con id {expense_id}")
+
         ...
 
     def get_by_id(self, expense_id: int) -> Expense | None:

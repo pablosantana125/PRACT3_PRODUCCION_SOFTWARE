@@ -54,3 +54,14 @@ def check_month_total(context, month_name, expected_total):
 def check_expenses_length(context, expenses):
     total = len(context["db"]._expenses)
     assert expenses == total
+
+
+@when(parsers.parse("calculo el total gastado por mes"))
+def calculate_monthly_totals(context):
+    context["totals"] = context["service"].total_by_month()
+
+
+@then(parsers.parse("el gasto con id {expense_id:d} no debe existir"))
+def check_expense_removed(context, expense_id):
+    with pytest.raises(ValueError):
+        context["service"].get_expense(expense_id)
