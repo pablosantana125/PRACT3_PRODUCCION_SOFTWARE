@@ -41,8 +41,6 @@ Feature: Gestión de gastos
     Then el total de dinero gastado debe ser 40 euros
 
 
-  # Nuevos
-
   Scenario: Añadir varios gastos y comprobar la cantidad de registros creados
     Given un gestor de gastos vacío
     When añado un gasto de 15 euros llamado Libro
