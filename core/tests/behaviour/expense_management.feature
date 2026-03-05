@@ -41,3 +41,20 @@ Feature: Gestión de gastos
     Then el total de dinero gastado debe ser 40 euros
 
 
+  Scenario: Añadir varios gastos y comprobar la cantidad de registros creados
+    Given un gestor de gastos vacío
+    When añado un gasto de 15 euros llamado Libro
+    And añado un gasto de 20 euros llamado Regalo
+    Then debe haber 2 gastos registrados
+
+  Scenario: Empezar con un gasto inicial, añadir otro nuevo y comprobar el total
+    Given un gestor con un gasto de 50 euros
+    When añado un gasto de 20 euros llamado Luz
+    Then el total de dinero gastado debe ser 70 euros
+    And debe haber 2 gastos registrados
+
+  Scenario: Eliminar el único gasto existente deja todo a cero
+    Given un gestor con un gasto de 100 euros
+    When elimino el gasto con id 1
+    Then el total de dinero gastado debe ser 0 euros
+    And debe haber 0 gastos registrados
